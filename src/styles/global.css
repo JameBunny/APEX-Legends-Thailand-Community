@@ -1,0 +1,129 @@
+:root {
+  --apex-red: #da292a;
+  --apex-dark-bg: #0b0c0d;
+  --apex-card-bg: #161719;
+  --apex-gold: #ffb300;
+  --apex-light-gray: #a4a5a7;
+  --font-heading: 'Oswald', 'Kanit', sans-serif;
+  --font-body: 'Kanit', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--apex-dark-bg);
+  color: #ffffff;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Container ส่วนกลางที่ยืดหยุ่นตามอุปกรณ์ */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+/* ปุ่มสไตล์ Apex Legends (มุมตัด Sci-Fi) */
+.apex-btn {
+  background-color: var(--apex-red);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.apex-btn:hover {
+  background-color: white;
+  color: var(--apex-red);
+  transform: translateY(-2px);
+}
+
+.apex-btn-secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid var(--apex-light-gray);
+  padding: 10px 26px;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.apex-btn-secondary:hover {
+  border-color: var(--apex-red);
+  color: var(--apex-red);
+}
+
+/* แถบหัวข้อสไตล์ Apex */
+.apex-section-title {
+  position: relative;
+  border-left: 5px solid var(--apex-red);
+  padding-left: 15px;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  .apex-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+}
+
+/* ระบบ Grid ที่รองรับทุกหน้าจออัตโนมัติ */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+@media (max-width: 480px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* ซ่อน Scrollbar ที่ไม่จำเป็น */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--apex-dark-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--apex-card-bg);
+  border: 2px solid var(--apex-dark-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--apex-red);
+}
