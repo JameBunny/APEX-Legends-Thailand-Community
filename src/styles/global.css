@@ -20,6 +20,13 @@ body {
   font-family: var(--font-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  /* เพิ่มเมาส์ Nessie เป็นเมาส์หลัก (ต้องมีไฟล์ nessie.png ในโฟลเดอร์ public) */
+  cursor: url('/nessie.png'), auto; 
+}
+
+/* ทำให้ปุ่ม ลิงก์ และการ์ด เปลี่ยนเป็นเมาส์ Nessie แบบชี้ได้ */
+a, button, .apex-btn, .apex-btn-secondary, input, select, textarea {
+  cursor: url('/nessie.png'), pointer !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -28,6 +35,29 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px;
 }
 
+/* -------------------------------------------
+   LAYOUT: เลย์เอาต์หลักแยกซ้ายขวาสำหรับ Sidebar ใหม่
+---------------------------------------------- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+  margin-left: 260px; /* เว้นระยะทางซ้ายไว้ 260px ให้ Sidebar */
+  width: calc(100% - 260px);
+}
+
+/* เมื่อหน้าจอเล็กกว่า 992px (เช่น ไอแพดแนวตั้ง หรือมือถือ) ให้ยุบ Sidebar */
+@media (max-width: 992px) {
+  .app-layout { flex-direction: column; }
+  .main-content { margin-left: 0; width: 100%; padding-bottom: 80px; }
+}
+
+/* -------------------------------------------
+   COMPONENTS: ส่วนประกอบต่างๆ ของเว็บ
+---------------------------------------------- */
 /* Container ส่วนกลางที่ยืดหยุ่นตามอุปกรณ์ */
 .container {
   width: 100%;
@@ -51,7 +81,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 600;
-  cursor: pointer;
   text-transform: uppercase;
   clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
   transition: all 0.2s ease-in-out;
@@ -74,7 +103,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   text-transform: uppercase;
   clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-  cursor: pointer;
   transition: all 0.2s;
 }
 
@@ -113,17 +141,36 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ซ่อน Scrollbar ที่ไม่จำเป็น */
+/* -------------------------------------------
+   EFFECTS: เอฟเฟกต์ตกแต่งให้ดูทันสมัย
+---------------------------------------------- */
+/* เอฟเฟกต์การ์ดเรืองแสง (Glow) สไตล์ Sci-Fi สำหรับ NewsCard และ VideoCard */
+.glass-card {
+  background: rgba(22, 23, 25, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--apex-red);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(218, 41, 42, 0.2);
+  border-left: 3px solid var(--apex-gold);
+}
+
+/* ปรับ Scrollbar ฝั่งขวาให้บางลงและดูโฉบเฉี่ยวขึ้น */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--apex-dark-bg);
+  background: rgba(11, 12, 13, 0.8);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--apex-card-bg);
-  border: 2px solid var(--apex-dark-bg);
+  background: var(--apex-red);
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--apex-red);
+  background: var(--apex-gold);
 }
