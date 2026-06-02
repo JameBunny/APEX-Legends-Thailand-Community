@@ -87,29 +87,66 @@ export default function Home() {
         </div>
       </div>
 
+// ... (ส่วนบนสุดของไฟล์ Home.jsx เก็บไว้เหมือนเดิม)
+
       {/* News & Patch Notes Section */}
       <div className="container" style={{ marginTop: '60px' }}>
-        <h2 className="apex-section-title">{t('latestNews')}</h2>
+        <motion.h2 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="apex-section-title"
+        >
+          {t('latestNews')}
+        </motion.h2>
+
         {patches.length === 0 ? (
           <p style={{ color: 'var(--apex-light-gray)' }}>ยังไม่มีการอัปเดตข่าวสารในขณะนี้...</p>
         ) : (
           <div className="responsive-grid">
-            {patches.map(item => (
-              <NewsCard key={item.id} item={item} />
+            {patches.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.15 }} // ดีเลย์ไล่ระดับให้ดูมีมิติ
+                className="glass-card" // เรียกใช้เอฟเฟกต์โกลว์จาก CSS ใหม่
+              >
+                <NewsCard item={item} />
+              </motion.div>
             ))}
           </div>
         )}
       </div>
 
       {/* Media Collection */}
-      <div className="container" style={{ marginTop: '70px' }}>
-        <h2 className="apex-section-title">{t('videoGallery')}</h2>
+      <div className="container" style={{ marginTop: '70px', paddingBottom: '40px' }}>
+        <motion.h2 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="apex-section-title"
+        >
+          {t('videoGallery')}
+        </motion.h2>
+
         {videos.length === 0 ? (
           <p style={{ color: 'var(--apex-light-gray)' }}>ยังไม่มีวิดีโอแนะนำในขณะนี้...</p>
         ) : (
           <div className="responsive-grid" style={{ gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr' }}>
-            {videos.map(video => (
-              <VideoCard key={video.id} video={video} />
+            {videos.map((video, index) => (
+              <motion.div
+                key={video.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="glass-card"
+                whileHover={{ scale: 1.02 }} // ซูมนิดๆ ตอนเอาเมาส์ชี้
+              >
+                <VideoCard video={video} />
+              </motion.div>
             ))}
           </div>
         )}
