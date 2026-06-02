@@ -14,9 +14,9 @@ export default function App() {
   return (
     <LanguageProvider>
       <Router>
-        <Cursor /> {/* เปิดใช้งานเมาส์เรืองแสง */}
+        <Cursor /> {/* เมาส์เรืองแสง / เนสซี่ */}
         <div className="app-layout">
-          <Sidebar /> {/* แถบเมนูซ้าย */}
+          <Sidebar /> {/* แถบเมนูซ้ายสุดล้ำ */}
           
           <main className="main-content">
             <Routes>
