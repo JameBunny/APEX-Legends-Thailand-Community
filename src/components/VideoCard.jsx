@@ -4,7 +4,7 @@ export default function VideoCard({ video }) {
   // ดึง ID จากวิดีโอ YouTube URL เพื่อทำ Embed Link
   const getEmbedUrl = (url) => {
     try {
-      const regExp = /^.*(youtu.be\\/|v\\/|u\\/\\/\\/|embed\\/|watch\\?v=|\\&v=)([^#\\&\\?]*).*/;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|\/embed\/|watch\?v=|&v=)([^#&?]*).*/;
       const match = url.match(regExp);
       return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : null;
     } catch (e) {
