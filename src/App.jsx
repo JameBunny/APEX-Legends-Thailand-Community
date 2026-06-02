@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// แก้ไขจาก BrowserRouter เป็น HashRouter เพื่อแก้ปัญหา 404 บน GitHub Pages
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Sidebar from './components/Sidebar';
 import Cursor from './components/Cursor';
